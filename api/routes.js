@@ -8,8 +8,12 @@ router.get('/', (req, res) => {
 		.then(employee => {
 			res.json({
 				employee
-			});
-		});
-});
+			})
+		})
+})
+
+// Create an employee
+
+router.post
 
 module.exports = router
