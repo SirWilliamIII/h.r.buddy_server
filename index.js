@@ -6,7 +6,7 @@ const express    = require('express'),
       _     = require('lodash')
 
 const app = express()
-const port = process.env.PORT || 3333
+const port = process.env.PORT || 3000
 const employees = require('./api/routes')
 
 
