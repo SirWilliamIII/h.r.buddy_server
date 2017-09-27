@@ -7,7 +7,7 @@ const express    = require('express'),
 
 const app = express()
 const port = process.env.PORT || 3000
-const employees = require('./api/routes')
+const employees = require('./routes/routes')
 
 
 app.use(cors())
