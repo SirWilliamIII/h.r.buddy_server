@@ -2,16 +2,6 @@ const express = require('express')
 const router = express.Router()
 const knex = require('../db/knex')
 
-//  Get all employees
-// router.get('/', (req, res) => {
-// 	knex('employees')
-// 		.then(employee => {
-// 			res.json({
-// 				employee
-// 			})
-// 		})
-// })
-
 router.get('/', (req, res) => {
 	knex.raw('select * from employees')
 		.then(employee => {
@@ -21,25 +11,21 @@ router.get('/', (req, res) => {
 		})
 })
 
-
-
 // Add an employee
-
-
 router.post('/', (req, res) => {
 	let newEmployee = {
-		first:   req.body.first_name,
-		last:    req.body.last_name,
+		first_name:   req.body.first_name,
+		last_name:    req.body.last_name,
 		email:   req.body.email,
 		phone:   req.body.phone,
 		address: req.body.address,
 		city:    req.body.city,
-		state:   req.body.state,
-		dept:    req.body.department
+		state:   req.body.state
 	}
-	return knex('employees').insert(newEmployee)
-		.then(employee => {
-			res.json(employee)
+	return knex.insert(newEmployee)
+		.into('employees')
+		.then(() => {
+			console.log(`${this.first_name} ${this.last_name} was inserted`)
 		});
 });
 
