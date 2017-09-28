@@ -58,7 +58,7 @@ router.put('/:id', (req, res) => {
 		.where('id', id)
 		.update(id, 'id')
 		.then(() => {
-			res.redirect(`/${id}`);
+			res.redirect(`/`);
 		});
 });
 
