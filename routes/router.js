@@ -3,7 +3,8 @@ const router = express.Router();
 
 const knex = require('../db/knex');
 
-/* This router is mounted at /todo */
+
+
 router.get('/', (req, res) => {
 	knex('employees')
 		.select()
@@ -23,14 +24,14 @@ router.get('/:id', (req, res) => {
 		});
 });
 
-router.get('/:id/edit', (req, res) => {
+router.put('/:id/edit', (req, res) => {
 	const id = req.params.id;
 	knex('employees')
 		.select()
 		.where('id', id)
 		.first()
-		.then(employee => {
-			res.send(employee);
+		.then(() => {
+			res.redirect('/');
 		});
 
 });
@@ -49,16 +50,6 @@ router.post('/', (req, res) => {
 		.into('employees')
 		.then(() => {
 			res.redirect('/')
-		});
-});
-
-router.put('/:id', (req, res) => {
-	const id = req.params.id;
-	knex('employees')
-		.where('id', id)
-		.update(id, 'id')
-		.then(() => {
-			res.redirect(`/`);
 		});
 });
 
