@@ -25,7 +25,7 @@ router.post('/', (req, res) => {
 	return knex.insert(newEmployee)
 		.into('employees')
 		.then(() => {
-			console.log(`${this.first_name} ${this.last_name} was inserted`)
+			res.redirect('/')
 		});
 });
 

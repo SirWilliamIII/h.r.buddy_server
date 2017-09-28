@@ -3,7 +3,7 @@ const express    = require('express'),
       logger     = require('morgan'),
       bodyParser = require('body-parser'),
       cors       = require('cors'),
-      _     = require('lodash')
+      _          = require('lodash')
 
 const app = express()
 const port = process.env.PORT || 3000
